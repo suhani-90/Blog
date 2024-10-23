@@ -2,10 +2,20 @@
     max-width: 800px;
     margin: 0 auto;
     padding: 20px;
+    background-color:rgb(168, 218, 220);
 }
 
 .form-container {
     margin-bottom: 30px;
+}
+.heading{
+    text-align: center;
+    color:rgb(6230, 57, 70);
+    
+}
+.subheading{
+    text-align: center;
+    color:rgb(29, 53, 87);
 }
 
 form {

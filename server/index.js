@@ -1,4 +1,3 @@
-
 require('dotenv').config();
 const express = require('express');
 const mongoose = require('mongoose');
@@ -59,5 +58,31 @@ app.delete('/api/posts/:id', async (req, res) => {
   }
 });
 
-const PORT = process.env.PORT || 5000;
-app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
+// Error handling for port in use
+const startServer = async (retryCount = 0) => {
+  const MAX_RETRIES = 3;
+  const PORT = process.env.PORT || 5001;
+  
+  try {
+    const server = app.listen(PORT, () => {
+      console.log(`Server running on port ${PORT}`);
+    });
+
+    server.on('error', (error) => {
+      if (error.code === 'EADDRINUSE') {
+        console.log(`Port ${PORT} is busy, trying port ${PORT + 1}`);
+        if (retryCount < MAX_RETRIES) {
+          process.env.PORT = PORT + 1;
+          startServer(retryCount + 1);
+        } else {
+          console.error('Could not find an available port. Please specify a different port in .env file');
+          process.exit(1);
+        }
+      }
+    });
+  } catch (error) {
+    console.error('Failed to start server:', error);
+  }
+};
+
+startServer();
