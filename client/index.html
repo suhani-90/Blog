@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simple Blog</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>My Blog</h1>
+        
+        <div class="form-container">
+            <h2>Create New Post</h2>
+            <form id="post-form">
+                <input type="text" id="title" placeholder="Title" required>
+                <input type="text" id="author" placeholder="Author" required>
+                <textarea id="content" placeholder="Content" required></textarea>
+                <button type="submit">Create Post</button>
+            </form>
+        </div>
+
+        <div id="posts-container">
+            <!-- Posts will be added here dynamically -->
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
+
