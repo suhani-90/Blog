@@ -1,2 +1,2 @@
 # Blog
-Simple blog platform 
+A basic blog platform using MongoDB, Express, React, and Node.js.
